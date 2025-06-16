@@ -79,5 +79,18 @@ public class StudentController {
 		return ResponseEntity.status(HttpStatus.OK).body(service.updateStudent(student));
 	}
 	
+
+	// Update a student by ID
+	@PutMapping("/student/{id}")
+	@Operation(summary = "Update a student by ID")
+	public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student updatedStudent) {
+	    Student student = service.updateStudent(id, updatedStudent);
+	    if (student != null) {
+	        return ResponseEntity.status(HttpStatus.OK).body(student);
+	    } else {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+	    }
+	}
+	
 	
 }

@@ -84,4 +84,15 @@ public class StudentService {
 	
 	
 
+	 public Student updateStudent(Long id, Student updatedStudent) {
+	        return repository.findById(id).map(student -> {
+	            student.setName(updatedStudent.getName());
+	            //student.setEmail(updatedStudent.getEmail());
+	            // Update other fields as necessary
+	            return repository.save(student); // Save the updated student
+	        }).orElse(null); // Return null if the student is not found
+	    }
+
+	
+
 }
