@@ -46,8 +46,7 @@ public class StudentController {
 	@GetMapping("/students")
 	@Operation(summary = "Fetch All The Records")
 	public ResponseEntity<List<Student>> fetchStudents
-	(@RequestParam(defaultValue = "id") String sort,
-	 @RequestParam(defaultValue = "false") boolean desc,
+	(@RequestParam(defaultValue = "id") String sort,@RequestParam(defaultValue = "false") boolean desc,
 	 @RequestParam(defaultValue = "1") int page,
 	 @RequestParam(defaultValue = "10") int data){
 		return ResponseEntity.status(HttpStatus.OK).body(service.fetchAll(sort,desc,page,data));
